@@ -2,7 +2,6 @@
 #ifndef __QINT_H__
 #define __QINT_H__
 #include "xuLiString.h"
-#include <bitset>
 #include<vector>
 #include<fstream>
 #include<cstring>
@@ -15,19 +14,8 @@ struct QInt
 {
 	uint32_t data[4] = { 0 };
 
-	//struct tu dong gan cai nay r, k can ham nay
-	/*QInt& operator=(const QInt &number2)
-	{
-		if (this != &number2)
-		{
-			for (int i = 0; i < 4; i++)
-			{
-				data[i] = number2.data[i];
-			}
-		}
-		return *this;
-	}*/
-
+	
+	QInt&  operator=(const string& num);
 	QInt& operator=(const int &number2);
 
 };

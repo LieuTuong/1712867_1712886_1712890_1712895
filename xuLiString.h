@@ -11,7 +11,7 @@ using namespace std;
 int stringToNum(char c);
 char numToString(int n);
 string toString(long long n);
-int toInt(string s);
+long long int toInt(string s);
 bool IsSign(string num);
 void setSign(string& num, bool s);
 string absolute(string num);

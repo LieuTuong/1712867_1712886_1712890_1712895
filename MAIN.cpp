@@ -3,8 +3,7 @@
 #include"QInt.h"
 #include"QFloat.h"
 #include<fstream>
-#include<vector>
-#include<cstring>
+
 
 //Ham tach token cua 1 string khi doc tu FILE
 vector<string> tachToken(string x)

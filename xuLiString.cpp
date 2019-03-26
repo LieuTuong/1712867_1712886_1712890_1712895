@@ -10,6 +10,8 @@ char numToString(int n)     // chuyen so sang char
 	return (char)(n + 48);
 }
 
+
+//Chuyen tu so nguyen sang dang string
 string toString(long long n)
 {
 	stringstream ss;
@@ -21,9 +23,11 @@ string toString(long long n)
 
 }
 
-int toInt(string s)
+
+//Chuyen tu string sang so nguyen
+long long int toInt(string s)
 {
-	int res = 0;
+	long long int res = 0;
 	for (int i = 0; i < s.length(); i++)
 	{
 		res = res * 10 + stringToNum(s[i]);
@@ -56,6 +60,8 @@ string absolute(string num)
 	return res;
 }
 
+
+//ham xoa so 0 dau chuoi
 string remove0(const string& number)
 {
 	string res = number;
@@ -106,7 +112,7 @@ string reverse(string a)
 	return rev_arr;
 }
 
-
+//Ham nhan 1 stirng so lon voi so int
 string operator * (string bigNumber, int x)
 {
 	string res = "";
@@ -195,7 +201,7 @@ void canBang2Chuoi(string& a, string& b)
 	}
 }
 
-
+//Ham tru 2 so nguyen lon duoi dang chuoi
 string subtract(string soTru, string soBiTru)
 {
 	string res;
@@ -228,7 +234,7 @@ string subtract(string soTru, string soBiTru)
 	return res;
 }
 
-
+//ham cong so nguyen lon bieu dien duoi dang chuoi
 string add(string a, string b)
 {
 	string res = "";

@@ -1,45 +1,37 @@
 #include"QInt.h"
-#include<bitset>
+
+//Phep gan QInt voi so nguyen lon bieu dien duoi dang string
+QInt& QInt:: operator=(const string& num)
+{
+	string number = num;
+
+	if (number[1] == 'b')//Day la so nhi phan
+	{
+		number.erase(0, 2);//xoa 0b
+	}
+	else if (number[1] == 'x')//Truyen vao la so he 16
+	{
+		number.erase(0, 2);
+		number = HexToBin(number);
+	}
+	else//Truyen vao la he 10
+	{
+		number = DecToBin(number);
+	}
+
+	if (number.length() < MAX)//Them cho du 128 bit
+	{
+		number.insert(0, MAX - number.length(), '0');
+	}
+
+	QInt qint;
+	qint = Arr_To_QInt(number);
+
+	return *this = qint;
 
 
+}
 
-//do ko chac unsigned int luon la 4 bytes, nen dung unit32_t
-//struct QInt
-//{
-//	uint32_t data[4] = { 0 };
-//
-//	QInt& operator=(const QInt &number2)
-//	{
-//		if (this != &number2)
-//		{
-//			for (int i = 0; i < 4; i++)
-//			{
-//				data[i] = number2.data[i];
-//			}
-//		}
-//		return *this;
-//	}
-//
-//	QInt& operator=(const int &number2)
-//	{
-//		string str = to_string(number2);
-//		str = DecToBin(str);
-//		int n = str.length();
-//		if (n < 128)
-//		{
-//			str.insert(0, 128 - n, '0');
-//		}
-//		QInt number;
-//		for (int i = 0; i < MAX; i++)
-//		{
-//			if (str[i] == '1')
-//			{
-//				number.data[i / 32] = number.data[i / 32] | (1 << (32 - 1 - i % 32));
-//			}
-//		}
-//		return *this = number;
-//	}
-//};
 
 //Phep gan QInt vs so nguyen int
 QInt& QInt::operator=(const int &number2)
@@ -52,13 +44,7 @@ QInt& QInt::operator=(const int &number2)
 		str.insert(0, 128 - n, '0');
 	}
 	QInt number;
-	for (int i = 0; i < MAX; i++)
-	{
-		if (str[i] == '1')
-		{
-			number.data[i / 32] = number.data[i / 32] | (1 << (32 - 1 - i % 32));
-		}
-	}
+	number = Arr_To_QInt(str);
 	return *this = number;
 }
 
