@@ -1,5 +1,5 @@
 #pragma once
-#pragma once
+
 #ifndef __QFLOAT_H__
 #define __QFLOAT_H__
 #include<iostream>
@@ -74,3 +74,4 @@ void PrintQfloat(QFloat number);
 
 
 #endif
+

@@ -29,7 +29,7 @@ struct QInt
 	}*/
 
 	QInt& operator=(const int &number2);
-	
+
 };
 
 

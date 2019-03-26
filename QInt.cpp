@@ -3,7 +3,7 @@
 
 
 
- //do ko chac unsigned int luon la 4 bytes, nen dung unit32_t
+//do ko chac unsigned int luon la 4 bytes, nen dung unit32_t
 //struct QInt
 //{
 //	uint32_t data[4] = { 0 };
@@ -41,6 +41,7 @@
 //	}
 //};
 
+//Phep gan QInt vs so nguyen int
 QInt& QInt::operator=(const int &number2)
 {
 	string str = to_string(number2);
@@ -61,7 +62,7 @@ QInt& QInt::operator=(const int &number2)
 	return *this = number;
 }
 
-//Ham chuyen tu QInt sang mang int a[MAX]
+//Ham chuyen tu struct QInt sang string
 string QInt_To_Arr(const QInt& number)
 {
 	string a;
@@ -81,8 +82,8 @@ string QInt_To_Arr(const QInt& number)
 
 
 
-//Ham chuyen tu mang a sang Qint
-QInt Arr_To_QInt (const string& binArr)
+//Ham chuyen tu string sang struct Qint
+QInt Arr_To_QInt(const string& binArr)
 {
 
 	string _128bit = binArr;
@@ -221,13 +222,13 @@ void ScanQInt(QInt &number, string userInputStr)
 
 	number = Arr_To_QInt(binArr);
 
-	cout << endl;
+	//cout << endl;
 
-	//Luc nop bai thi xoa cai nay
-	for (int i = 0; i < 4; i++)
-	{
-		cout << bitset<32>(number.data[i]);
-	}
+	////Luc nop bai thi xoa cai nay
+	//for (int i = 0; i < 4; i++)
+	//{
+	//	cout << bitset<32>(number.data[i]);
+	//}
 }
 
 
@@ -297,7 +298,7 @@ string BinToHex(string bin)
 		}
 		res.push_back(nibbles(bo4Bit));
 	}
-	
+
 	return res;
 }
 
@@ -310,7 +311,7 @@ string DecToHex(string dec)
 {
 	string res;
 	res = DecToBin(dec);
-	res = BinToHex(res);	
+	res = BinToHex(res);
 	return res;
 }
 
@@ -343,6 +344,7 @@ string tu16_2(char x)
 
 }
 
+//He 16 -> he 2
 string HexToBin(string HexStr)
 {
 	string res = "";
@@ -407,7 +409,7 @@ string TruBit(const string& n1, const string& n2)
 	return  CongBit(n1, bu2_n2);
 }
 
-
+//toan tu +
 QInt operator + (const QInt& n1, const QInt& n2)
 {
 	string num1 = QInt_To_Arr(n1);
@@ -417,6 +419,7 @@ QInt operator + (const QInt& n1, const QInt& n2)
 	return Arr_To_QInt(res);
 }
 
+//Toan tu -
 QInt operator - (const QInt& n1, const QInt& n2)
 {
 	string res;
@@ -426,6 +429,7 @@ QInt operator - (const QInt& n1, const QInt& n2)
 	return Arr_To_QInt(res);
 }
 
+//Toan tu nhan
 QInt operator * (const QInt& m, const QInt& q)
 {
 	string A(MAX, '0');
@@ -464,6 +468,8 @@ QInt operator * (const QInt& m, const QInt& q)
 
 }
 
+
+//Toan tu /
 QInt operator / (const QInt& number1, const QInt& number2)
 {
 	string M = QInt_To_Arr(number2);
@@ -487,7 +493,7 @@ QInt operator / (const QInt& number1, const QInt& number2)
 		M = bu2(M);
 		Q = bu2(Q);
 	}
-	
+
 	//===================================== thuc hien phep chia ========================
 	string A;
 	int n = Q.size();
@@ -505,7 +511,7 @@ QInt operator / (const QInt& number1, const QInt& number2)
 	QInt number;
 	A_Q += A;
 	A_Q += Q;
-	cout << A_Q.size();
+	
 	while (k > 0)
 	{
 		A_Q = dichTrai(A_Q, 1);
@@ -550,6 +556,7 @@ bool IsNegative(string num)
 	return (num[0] == '1') ? true : false;
 }
 
+//Ham kiem tra 2 QInt bang nhau
 bool IsEqual(const QInt& N1, const QInt& N2)
 {
 	string n1 = QInt_To_Arr(N1);
@@ -557,6 +564,8 @@ bool IsEqual(const QInt& N1, const QInt& N2)
 	return n1 == n2;
 }
 
+
+//Kiem tra QInt a < QInt b ko
 bool IsLess(const QInt& N1, const QInt& N2)
 {
 	//chuyen QInt qua mang de so sanh
@@ -599,6 +608,8 @@ bool IsLess(const QInt& N1, const QInt& N2)
 
 }
 
+
+//Kiem tra QInt a > QInt b ko
 bool IsGreater(const QInt& N1, const QInt& N2)
 {
 	return !IsLess(N1, N2) && !IsEqual(N1, N2);
@@ -616,12 +627,12 @@ bool operator > (const QInt& N1, const QInt& N2)
 
 bool operator <= (const QInt& N1, const QInt& N2)
 {
-	return  IsEqual(N1, N2)|| IsLess(N1, N2);
+	return  IsEqual(N1, N2) || IsLess(N1, N2);
 }
 
 bool operator >= (const QInt& N1, const QInt& N2)
 {
-	return IsEqual(N1, N2) || IsGreater(N1, N2) ;
+	return IsEqual(N1, N2) || IsGreater(N1, N2);
 }
 
 bool operator == (const QInt& N1, const QInt& N2)
@@ -716,7 +727,7 @@ QInt operator ~ (const QInt& a)
 	return res;
 }
 
-
+//Toan tu dich phai so hoc
 string dichPhai(const string& A, int bit)
 {
 	string a = A;
@@ -742,6 +753,8 @@ string dichPhai(const string& A, int bit)
 	return res;
 }
 
+
+//Toan tu dich trai
 string dichTrai(const string& b, int bit)
 {
 	string res;

@@ -9,7 +9,7 @@ typedef struct
 	uint32_t data[4] = { 0 };
 }QFloat;
 
-
+//Ham kiem tra so thap phan co phai la so am
 bool isSign(string num)
 {
 	return (num[0] == '-') ? true : false;
@@ -26,6 +26,7 @@ int StringToNum(char c)     // chuyen char sang so
 	return c - '0';
 }
 
+//Ham nhan mot so (string) lon voi 1 so nguyen nho
 string mult(string bigNumber, int x)
 {
 	string res = "";
@@ -53,6 +54,7 @@ string mult(string bigNumber, int x)
 	return res;
 }
 
+//Ham bo so 0 o dau chuoi
 string remove_0(const string& number)
 {
 	string res = number;
@@ -66,6 +68,8 @@ string remove_0(const string& number)
 	}
 	return res;
 }
+
+//Ham lay so lon duoi dang string chia 2
 string chia_2(string bigInt)
 {
 
@@ -88,6 +92,7 @@ string chia_2(string bigInt)
 	return tmp;
 }
 
+//Ham dao nguoc chuoi
 string Reverse(string a)
 {
 	string rev_arr;
@@ -98,7 +103,7 @@ string Reverse(string a)
 	return rev_arr;
 }
 
-
+//Ham chuyen so nguyen tu he 10 -> he 2
 string Dec_To_Bin(string userInputStr)
 {
 	string binary;
@@ -131,6 +136,7 @@ string Dec_To_Bin(string userInputStr)
 
 }
 
+//Ham dem so phan tu sau dau cham cua so thuc, nghia la dem so luong phan tu phan thap phan
 int SoPhanTuSauDauCham(string phanThapPhan)
 {
 	int dauCham = phanThapPhan.find_first_of('.');
@@ -138,6 +144,7 @@ int SoPhanTuSauDauCham(string phanThapPhan)
 }
 
 
+//Ham tao so thuc 1.x voi x la n so 0 ngoai sau
 string Float_1(int n)
 {
 	string res = "1.";
@@ -147,6 +154,8 @@ string Float_1(int n)
 	}
 	return res;
 }
+
+//Ham can bang 2 chuoi bang cach them 0 vao dau chuoi
 void canBang2Chuoi_ThemVaoDau(string& a, string& b)
 {
 	int a_len = a.length(), b_len = b.length();
@@ -159,6 +168,8 @@ void canBang2Chuoi_ThemVaoDau(string& a, string& b)
 		a.insert(0, b_len - a_len, '0');
 	}
 }
+
+//Ham cong 2 day bit lai
 string CongBit_QFloat(string a, string b)
 {
 	canBang2Chuoi_ThemVaoDau(a, b);
@@ -186,6 +197,8 @@ string CongBit_QFloat(string a, string b)
 	return res;
 }
 
+
+//Ham tach so thuc thanh (phan nguyen) truoc dau '.' va (phan thap phan) sau dau '.'
 void tachQFloat(string bigFloat, string& phanNguyen, string& phanThapPhan)
 {
 	int len = bigFloat.length();
@@ -195,7 +208,7 @@ void tachQFloat(string bigFloat, string& phanNguyen, string& phanThapPhan)
 	phanThapPhan.insert(0, 1, '0');//dua ve dang (0.x)
 }
 
-
+//Ham chuan hoa ve dang 1.F * 2^E
 void chuanHoaQFloat(string &number, int &soMu)
 {
 	string phanNguyen, phanThapPhan;
@@ -340,7 +353,7 @@ void chuanHoaQFloat(string &number, int &soMu)
 }
 
 
-
+//Ham chuyen tu mang string vao struct QFloat
 QFloat Arr_To_QFloat(const string& binArr)
 {
 
@@ -355,7 +368,7 @@ QFloat Arr_To_QFloat(const string& binArr)
 	return number;
 }
 
-
+//Ham chuyen QFloat tu he 10 -> he 2
 string DecToBin_QFloat(string number)
 {
 	string res;
@@ -387,6 +400,8 @@ string DecToBin_QFloat(string number)
 	return res;
 }
 
+
+//Ham nhap so QFloat
 void ScanQFloat(QFloat &x, string number)
 {
 	string res;
@@ -396,11 +411,10 @@ void ScanQFloat(QFloat &x, string number)
 		number += ".0";
 	}
 	res = DecToBin_QFloat(number);
-	cout << res << endl;
 	x = Arr_To_QFloat(res);
 }
 
-
+//Ham chuyen tu struct QFloat vao string
 string QFloat_To_Arr(const QFloat& number)
 {
 	string a;
@@ -418,7 +432,7 @@ string QFloat_To_Arr(const QFloat& number)
 	return a;
 }
 
-
+// tinh x^n
 string _X_mu_N(int coSo, int soMu)
 {
 	bool soAm = false;
@@ -438,7 +452,7 @@ string _X_mu_N(int coSo, int soMu)
 	return res;
 }
 
-
+//Ham cong 2 so nguyen lon duoc bieu dien duoi dang string
 string congString(string a, string b)
 {
 	string res = "";
@@ -459,6 +473,8 @@ string congString(string a, string b)
 	return res;
 }
 
+
+//Ham tru 2 so nguyen lon duoc bieu dien duoi dang string
 string truString(string a, string b)
 {
 	string res = "";
@@ -485,7 +501,7 @@ string truString(string a, string b)
 	return res;
 }
 
-
+//Ham chuyen so nguyen tu he 2 -> he 10
 string Bin_To_Dec(string bit)
 {
 	string decNum, tmp;
@@ -512,6 +528,8 @@ string Bin_To_Dec(string bit)
 	return decNum;
 }
 
+
+//Ham can bang 2 chuoi bang cach them so 0 vao cuoi chuoi
 void canBang2Chuoi_ThemVaoCuoi(string &a, string &b)
 {
 	int a_len = a.length(), b_len = b.length();
@@ -525,7 +543,7 @@ void canBang2Chuoi_ThemVaoCuoi(string &a, string &b)
 	}
 }
 
-
+//Tinh 2^(-n)
 string _2_Mu_Tru_N(int n)
 {
 	string res = "1";
@@ -542,6 +560,8 @@ string _2_Mu_Tru_N(int n)
 	return res;
 }
 
+
+//Ham chuyen phan thap phan cua so thuc tu he 2 -> he 10
 string BinToDec_PhanThapPhan(string str)
 {
 	string tmp, res = "0";
@@ -559,7 +579,7 @@ string BinToDec_PhanThapPhan(string str)
 	return res;
 }
 
-
+//Xoa so 0 du o cuoi chuoi
 void xoa_0_Cuoi_String(string &str)
 {
 	int n = str.size();
@@ -574,6 +594,8 @@ void xoa_0_Cuoi_String(string &str)
 	str.erase(i + 1);
 }
 
+
+//Ham chuyen so QFloat tu he 2 -> he 10
 string BinToDec_QFloat(string arr)
 {
 	string str(MAX, '0');
@@ -654,6 +676,7 @@ string BinToDec_QFloat(string arr)
 	}
 }
 
+//Ham xuat QFloat
 void PrintQfloat(QFloat number)
 {
 	string arr = QFloat_To_Arr(number);
